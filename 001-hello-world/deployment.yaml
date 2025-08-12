@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: hello-world
-          image: registry.digitalocean.com/web-app-registry-frankfurt/my-hello-world:1.0.2
+          image: registry.digitalocean.com/web-app-containers/my-hello-world:1.0.0
           ports:
             - containerPort: 80
 ---
@@ -54,6 +54,16 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
+    - host: superdeepsearch.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-world-service
+                port:
+                  number: 80
     - host: www.superdeepsearch.com
       http:
         paths:
