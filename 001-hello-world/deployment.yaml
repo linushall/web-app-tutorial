@@ -1,7 +1,16 @@
+# Namespace web
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: web
+---
+
+# Deployment for Hello World Application
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-world-deployment
+  namespace: web
 spec:
   replicas: 1
   selector:
@@ -14,14 +23,17 @@ spec:
     spec:
       containers:
         - name: hello-world
-          image: registry.digitalocean.com/first-project-registry-2025/my-hello-world:latest
+          image: registry.digitalocean.com/web-app-registry-frankfurt/my-hello-world:1.0.2
           ports:
             - containerPort: 80
 ---
+
+# Service for Hello World Application
 apiVersion: v1
 kind: Service
 metadata:
   name: hello-world-service
+  namespace: web
 spec:
   selector:
     app: hello-world
@@ -30,10 +42,13 @@ spec:
       port: 80
       targetPort: 80
 ---
+
+# Ingress for Hello World Application
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hello-world-ingress
+  namespace: web
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:

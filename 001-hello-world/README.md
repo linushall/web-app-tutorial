@@ -1,13 +1,6 @@
+# 1. Hello World
 
-
-## Create docker image
-
-```shell
-docker build -t my-hello-world .
-```
-
-## Test it locally
-```shell
-docker run -p 8080:80 my-hello-world
-```
-Open `http://localhost:8080`
+In this guid we will take our simple HTML and publish it to end users. Key points are:
+- it will be with HTTPS
+- it will be running in small Kubernetes cluster in Digital Ocean
+- total price will be $12 per month
