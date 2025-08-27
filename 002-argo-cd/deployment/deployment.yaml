@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: hello-world
-          image: registry.digitalocean.com/web-app-registry-frankfurt/my-hello-world:1.0.0
+          image: registry.digitalocean.com/web-app-registry-frankfurt/my-hello-world:1.0.1
           ports:
             - containerPort: 80
 ---
